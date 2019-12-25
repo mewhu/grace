@@ -8,6 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="">
 <meta name="format-detection" content="telephone=no">
 <meta content="target-densitydpi=device-dpi,width=640,user-scalable=no" name="viewport">
+<audio src="mp3/xyy.mp3" autoplay loop></audio>
 <title>jQuery大转盘抽奖领红包代码 - 站长素材</title>
 
 <link rel="stylesheet" type="text/css" href="css/base.css">
@@ -17,18 +18,32 @@
 <script type="text/javascript" src="js/jquery.rotate.min.js"></script>
 <script type="text/javascript" src="js/jQuery.md5.js"></script>
 <script> 
-jQuery(document).ready(function($) {
-	$('#musicbtn').click(function() {
-		var music = document.getElementById("audio");
-		if (music.paused) {
-			music.play();
-			$("#musicbtn").css("opacity", "1");
-		} else {
-			music.pause();
-			$("#musicbtn").css("opacity", "0.4");
-		}
-	});
-});
+// jQuery(document).ready(function($) {
+// 	$('#musicbtn').click(function() {
+// 		var music = document.getElementById("audio");
+// 		if (music.paused) {
+// 			music.play();
+// 			$("#musicbtn").css("opacity", "1");
+// 		} else {
+// 			music.pause();
+// 			$("#musicbtn").css("opacity", "0.4");
+// 		}
+// 	});
+// });
+	// jQuery(document).ready(function ($) {
+	// 	$('#plateBtn').click(function () {
+	// 		// var music_audio = document.getElementById("audio");
+	// 		var sound = document.getElementById("sound");
+	// 		if (sound.paused) {
+	// 			sound.play();
+	// 			// music_sound.pause;
+	// 			// $("#musicbtn").css("opacity", "1");
+	// 		} else {
+	// 			sound.pause();
+	// 			// $("#musicbtn").css("opacity", "0.4");
+	// 		}
+	// 	});
+	// });
 </script>
 <script type="text/javascript">
 	var moneyVal = 30;
@@ -40,32 +55,32 @@ jQuery(document).ready(function($) {
 		var $resultBtn = $('#resultBtn');
 
 		$plateBtn.click(function(){
-			var data = [0, 1, 2, 3, 4, 5];
-			data = data[Math.floor(Math.random()*data.length)];
+			var sound = document.getElementById("sound");
+			if (sound.paused) {
+				sound.play();
+				// music_sound.pause;
+				// $("#musicbtn").css("opacity", "1");
+			}
+
+			// var data = [0, 1, 2, 3, 4, 5];
+			var data = 0;
+			// data = data[Math.floor(Math.random()*data.length)];
+			data = Math.floor(Math.random()*20);
+			var award_angle_list = [0, 110, 240];
+			var no_award_angle_list = [45, 180, 300];
+			var index = 0;
 			switch(data){
 				case 1:
+					index = Math.floor(Math.random()*3);
+					angle = award_angle_list[index];
 					moneyVal = 200;
-					rotateFunc(1,150,'恭喜你中了200 <em ><a href="javascript:void(0)" onclick="showPrize()">点击领取</a></em>');
+					rotateFunc(1,angle,'恭喜你中了200 <em ><a href="javascript:void(0)" onclick="showPrize()">点击领取</a></em>');
 					break;
-				case 200000:
-					moneyVal = -1;
-					rotateFunc(2,180,'恭喜你中了iphone6s <em><a href="javascript:void(0)" onclick="showPrize()">点击领取</a></em>');
-					break;
-				case 3:
-					moneyVal = 500;
-					rotateFunc(3,60,'恭喜你中了500 <em><a href="javascript:void(0)" onclick="showPrize()">点击领取</a></em>');
-					break;
-				case 4:
-					moneyVal = -1;
-					rotateFunc(4,360,'<em>好运连连--加油！！看好你哦</em>');
-					break;
-				case 5:
-					moneyVal = 100;
-					rotateFunc(5,240,'恭喜你中了100 <em><a href="javascript:void(0)" onclick="showPrize()">点击领取</a></em>');
-					break;
-
 				default:
-					rotateFunc(0,300,'恭喜你中了30 <em><a href="javascript:void(0)" onclick="showPrize()">点击领取</a></em>');
+					index = Math.floor(Math.random() * 3);
+					angle = no_award_angle_list[index];
+					moneyVal = -1;
+					rotateFunc(4,angle,'<em>好运连连--加油！！看好你哦</em>');
 			}
 		});
 
@@ -76,6 +91,9 @@ jQuery(document).ready(function($) {
 				duration: 5000,
 				animateTo: angle + 1440,  //angle是图片上各奖项对应的角度，1440是让指针固定旋转4圈
 				callback: function() {
+					var sound = document.getElementById("sound");
+					sound.pause();
+
 					$resultTxt.html(text);
 					//$result.show();
 					if (moneyVal == -1) {
@@ -200,24 +218,32 @@ jQuery(document).ready(function($) {
 
 </head>
 <body class="bgGray">
+	<audio id="myaudio" src="mp3/xyy.mp3" controls="controls" autoplay loop="true" hidden="true">
+	</audio>
+	
 
 <div class="wrap">
 	<div class="projIntro">
 		<dl class="huodong1">
-			<dd><a href="javascript:void(0)" onclick="showRule()"><img src="images/projIntr_n01.png" alt=""><span>活动规则</span></a> </dd>
-			<dd><a href="javascript:void(0)" onclick="showWin()"><img src="images/projIntr_n02.png" alt=""><span>中奖名单</span></a></dd>
-			<a href="#" id="musicbtn"></a>
 			<audio id="audio" autoplay="autoplay"  loop="loop">
 				<source src="mp3/xyy.mp3" type="audio/mpeg">
 			</audio>
+			<audio id="sound" autoplay="autoplay" loop="loop">
+				<source src="mp3/prize_open_effect.mp3" type="audio/mpeg">
+			</audio>
 		</dl>
-		<dl style="background:url(images/beijing.png) no-repeat;">
+		<dl>
+			<!-- <div class="adv" style=" width:640px;margin:0 auto; text-align:center;"><img src="images/adv.png"></div> -->
+			<div class="dibu" style="width:640px; margin:0 auto; text-align:center;"><img src="images/grace_top.png" style="width: 640px;"></div>
+		</dl>
+		<dl style="background:url(images/grace_beijing.png) no-repeat;background-size:100% 100%;">
 			<div class="zhuanpan" style="width:640px; height:700px; margin:0 auto;">
 				<div class="main">
 					<div class="choujiang">
-						<div class="plate">
+						<!-- <div class="plate">
 							<a id="plateBtn" href="javascript:" title="开始抽奖">开始抽奖</a>
-						</div>
+						</div> -->
+						<a id="plateBtn" href="javascript:" title="开始抽奖">开始抽奖</a>
 						<div id="result">
 							<p id="resultTxt"></p>
 							<a id="resultBtn" href="javascript:" title="关闭">关闭</a>
@@ -273,24 +299,24 @@ jQuery(document).ready(function($) {
 						<div id="mask_share" class="mask" style="display: none" onclick="closeShare()"></div>
 						<div id="share" style="display: none">
 							<div>
-								<h3>分享好友获得额外一次抽奖机会和20元红包哦</h3>
-								<a class="a_prize" href="">再次开抢</a>
-								<a class="a_share" href="http://www.rongtoujinrong.com/member/promotion/" target="_blank">分享</a> </div>
+								<h3>再接再勵!</h3>
+								<!-- <a class="a_prize" href="">再次开抢</a> -->
+								<!-- <a class="a_share" href="http://www.rongtoujinrong.com/member/promotion/" target="_blank">分享</a> </div> -->
 						</div>
 					</div>
 				</div>
 			</div>
 		</dl>
-		<dl>
+		<!-- <dl>
 			<div class="adv" style=" width:640px;margin:0 auto; text-align:center;"><img src="images/adv.png"></div>
 			<div class="dibu" style=" width:640px;margin:0 auto; text-align:center;"><img src="images/qiche.jpg"></div>
-		</dl>
+		</dl> -->
 		<div class="clear"></div>
 	</div>
 </div>
 <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
-<p>适用浏览器：360、FireFox、Chrome、Opera、Safari、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
-<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+<!-- <p>适用浏览器：360、FireFox、Chrome、Opera、Safari、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p> -->
 </div>
 </body>
 </html>
