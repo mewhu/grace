@@ -8,7 +8,6 @@
 <meta name="apple-mobile-web-app-title" content="">
 <meta name="format-detection" content="telephone=no">
 <meta content="target-densitydpi=device-dpi,width=640,user-scalable=no" name="viewport">
-<audio src="mp3/xyy.mp3" autoplay loop></audio>
 <title>jQuery大转盘抽奖领红包代码 - 站长素材</title>
 
 <link rel="stylesheet" type="text/css" href="css/base.css">
@@ -18,18 +17,20 @@
 <script type="text/javascript" src="js/jquery.rotate.min.js"></script>
 <script type="text/javascript" src="js/jQuery.md5.js"></script>
 <script> 
-// jQuery(document).ready(function($) {
-// 	$('#musicbtn').click(function() {
-// 		var music = document.getElementById("audio");
-// 		if (music.paused) {
-// 			music.play();
-// 			$("#musicbtn").css("opacity", "1");
-// 		} else {
-// 			music.pause();
-// 			$("#musicbtn").css("opacity", "0.4");
-// 		}
-// 	});
-// });
+	jQuery(document).ready(function($) {
+		// var music = document.getElementById("audio");
+		// music.play();
+		// $('#musicbtn').click(function() {
+		// 	var music = document.getElementById("audio");
+		// 	if (music.paused) {
+		// 		music.play();
+		// 		$("#musicbtn").css("opacity", "1");
+		// 	} else {
+		// 		music.pause();
+		// 		$("#musicbtn").css("opacity", "0.4");
+		// 	}
+		// });
+	});
 	// jQuery(document).ready(function ($) {
 	// 	$('#plateBtn').click(function () {
 	// 		// var music_audio = document.getElementById("audio");
@@ -218,9 +219,6 @@
 
 </head>
 <body class="bgGray">
-	<audio id="myaudio" src="mp3/xyy.mp3" controls="controls" autoplay loop="true" hidden="true">
-	</audio>
-	
 
 <div class="wrap">
 	<div class="projIntro">
@@ -228,7 +226,7 @@
 			<audio id="audio" autoplay="autoplay"  loop="loop">
 				<source src="mp3/xyy.mp3" type="audio/mpeg">
 			</audio>
-			<audio id="sound" autoplay="autoplay" loop="loop">
+			<audio id="sound">
 				<source src="mp3/prize_open_effect.mp3" type="audio/mpeg">
 			</audio>
 		</dl>
