@@ -63,7 +63,7 @@
 }
 #awards div{
     width: 400px;
-    height: 290px;
+    height: 130px;
     background: url("../images/u16.png");
     background-size: 100% 100%;
     position: absolute;
@@ -78,7 +78,8 @@
     font-weight: bold;
     color: #fff;
     /* padding: 100px 10px 10px 10px; */
-    padding-top: 100px;
+    /* padding-top: 100px; */
+    padding: 0px 10px;
 }
 #awards input {
     text-align: center;
@@ -98,9 +99,13 @@
     font-size: 16px;
     margin: 10px;
 }
+#awards_box {
+    /* padding: 60px 0px; */
+    padding-top: 100px;
+}
 #share div {
     width: 300px;
-    height: 290px;
+    height: 180px;
     background: url("../images/u12.png");
     position: absolute;
     left: 169px;
@@ -111,13 +116,18 @@
     font-size: 24px;
     font-weight: bold;
     color: #fff;
-    padding: 88px 10px 10px 10px;
+    /* padding: 80px 10px 80px 10px; */
+    padding: 0px 10px;
 }
 #share a {
     display: inline-block;
     color: #fff;
     width: 100px;
     height: 30px;
+}
+#share_box {
+    /* padding: 60px 0px; */
+    padding-top: 100px;
 }
 
 /* 页面 css */
@@ -130,7 +140,8 @@ h1{width:900px;margin:40px auto;font:32px "Microsoft Yahei";text-align:center;}
     margin: auto;
     width:560px;
     height:560px;
-    background:url(../images/grace_activity-lottery-1.gif) no-repeat; background-size:100% 100%;
+    background:url(../images/grace_activity-lottery-1.gif) no-repeat;
+    background-size: 100% 100%;
 }
 .plate{
     position:relative;
@@ -145,14 +156,15 @@ h1{width:900px;margin:40px auto;font:32px "Microsoft Yahei";text-align:center;}
     margin: 0px;
     /* margin-top: 30%; */
     /* margin-bottom: 30%; */
-    left: 28%;
-    right: 32%;
+    left: 30%;
+    right: 30%;
     top: 30%;
     bottom: 30%;
     /* top:151px; */
     /* width:173px; */
     height:200px;
-    background-image:url(../images/grace_activity-lottery-22-02.png) ;
+    width:200px;
+    background-image:url(../images/grace_activity-lottery-22_003-02.png) ;
     background-size: 100% 100%;
     text-indent:-9999px;
     overflow:hidden;

@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="">
 <meta name="format-detection" content="telephone=no">
 <meta content="target-densitydpi=device-dpi,width=640,user-scalable=no" name="viewport">
-<audio src="mp3/xyy.mp3" autoplay loop></audio>
+<!-- <audio src="mp3/xyy.mp3" autoplay loop></audio> -->
 <title>jQuery大转盘抽奖领红包代码 - 站长素材</title>
 
 <link rel="stylesheet" type="text/css" href="css/base.css">
@@ -19,8 +19,8 @@
 <script type="text/javascript" src="js/jQuery.md5.js"></script>
 <script> 
 	jQuery(document).ready(function($) {
-		var music = document.getElementById("audio");
-		music.play();
+		// var music = document.getElementById("audio");
+		// music.play();
 		// $('#musicbtn').click(function() {
 		// 	var music = document.getElementById("audio");
 		// 	if (music.paused) {
@@ -71,7 +71,7 @@
 			var award_angle_list = [0, 110, 240];
 			var no_award_angle_list = [45, 180, 300];
 			var award_500_angle_list = [0, 100, 185, 280];
-			var award_turtle_angle_list = [75, 145, 240, 335];
+			var award_turtle_angle_list = [75, 150, 240, 335];
 			var award_sugar_angle_list = [35, 125, 215, 305];
 
 			var index = 0;
@@ -116,8 +116,8 @@
 			$plateBtn.stopRotate();
 			$plateBtn.rotate({
 				angle: 0,
-				// duration: 5000,
-				duration: 1000,
+				duration: 500,
+				// duration: 4000,
 				animateTo: angle + 1440,  //angle是图片上各奖项对应的角度，1440是让指针固定旋转4圈
 				callback: function() {
 					// var sound = document.getElementById("sound");
@@ -130,6 +130,12 @@
 					}
 					else {
 						// $('#title_h').text('恭喜你获得' + moneyVal + '元红包');
+						if (moneyVal == 500) {
+							$('#title_g').text("新年快樂! 中大獎囉!");
+						}
+						else{
+							$('#title_g').text("新年快樂! 恭喜獲得!");
+						}
 						$('#title_h').text(award_text);
 						showPrize();
 					}
@@ -269,9 +275,9 @@
 <div class="wrap">
 	<div class="projIntro">
 		<dl class="huodong1">
-			<audio id="audio" autoplay="autoplay"  loop="loop">
+			<!-- <audio id="audio" autoplay="autoplay"  loop="loop">
 				<source src="mp3/xyy.mp3" type="audio/mpeg">
-			</audio>
+			</audio> -->
 			<audio id="sound">
 				<source src="mp3/prize_open_effect.mp3" type="audio/mpeg">
 			</audio>
@@ -332,8 +338,9 @@
 						</div>
 						<div id="mask_awards" class="mask" style="display: none" onclick="closePrize()"></div>
 						<div id="awards"  style="display: none; margin-top:0;">
-							<div>
-								<h3 id="title_h">恭喜你获得30元红包</h3>
+							<div id="awards_box">
+								<h3 id="title_g">to be determined</h3>
+								<h3 id="title_h">to be determined</h3>
 								<!-- <input id="tel" type="text" value="请输入您的手机号码领取" onclick="this.value='';focus()">
 								<a class="a_prize" href="javascript:void(0);" onclick="lingjiang();">领奖</a>
 								<a class="a_share" href="http://www.rongtoujinrong.com/member/promotion/" target="_blank">分享</a>
@@ -342,8 +349,9 @@
 						</div>
 						<div id="mask_share" class="mask" style="display: none" onclick="closeShare()"></div>
 						<div id="share" style="display: none">
-							<div>
-								<h3>再接再勵!</h3>
+							<div id="share_box">
+								<h3>新年快樂! 恭喜獲得!!</h3>
+								<h3>【吃個甜甜過個好年-幸運小糖】</h3>
 								<!-- <a class="a_prize" href="">再次开抢</a> -->
 								<!-- <a class="a_share" href="http://www.rongtoujinrong.com/member/promotion/" target="_blank">分享</a> </div> -->
 						</div>
