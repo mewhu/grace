@@ -62,11 +62,14 @@
     background: url("../images/u33.png");
 }
 #awards div{
-    width: 300px;
+    width: 400px;
     height: 290px;
-    background: url("../images/u12.png");
+    background: url("../images/u16.png");
+    background-size: 100% 100%;
     position: absolute;
-    left: 169px;
+    /* left: 169px; */
+    left: 120px;
+    right: 120px;
     top: 145px;
     text-align: center;
 }
@@ -74,7 +77,8 @@
     font-size: 24px;
     font-weight: bold;
     color: #fff;
-    padding: 54px 10px 10px 10px;
+    /* padding: 100px 10px 10px 10px; */
+    padding-top: 100px;
 }
 #awards input {
     text-align: center;
@@ -138,15 +142,18 @@ h1{width:900px;margin:40px auto;font:32px "Microsoft Yahei";text-align:center;}
 #plateBtn{
     position:absolute;
     /* margin: 99px; */
-    margin: auto;
-    left: 30%;
-    right: 30%;
+    margin: 0px;
+    /* margin-top: 30%; */
+    /* margin-bottom: 30%; */
+    left: 28%;
+    right: 32%;
     top: 30%;
     bottom: 30%;
     /* top:151px; */
     /* width:173px; */
-    height:173px;
-    background-image:url(../images/grace_activity-lottery-22.png) ;
+    height:200px;
+    background-image:url(../images/grace_activity-lottery-22-02.png) ;
+    background-size: 100% 100%;
     text-indent:-9999px;
     overflow:hidden;
 }
@@ -185,3 +192,7 @@ h1{width:900px;margin:40px auto;font:32px "Microsoft Yahei";text-align:center;}
 }
 
 #musicbtn { float:right; background:url(../images/yinyu.png) no-repeat; width:44px; height:44px; display:block; padding-top:5px}
+
+#title_h{
+    width: 100%;
+}

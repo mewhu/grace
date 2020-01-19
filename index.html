@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="">
 <meta name="format-detection" content="telephone=no">
 <meta content="target-densitydpi=device-dpi,width=640,user-scalable=no" name="viewport">
-<!-- <audio src="mp3/xyy.mp3" autoplay loop></audio> -->
+<audio src="mp3/xyy.mp3" autoplay loop></audio>
 <title>jQuery大转盘抽奖领红包代码 - 站长素材</title>
 
 <link rel="stylesheet" type="text/css" href="css/base.css">
@@ -57,52 +57,80 @@
 		var $resultBtn = $('#resultBtn');
 
 		$plateBtn.click(function(){
-			var sound = document.getElementById("sound");
-			if (sound.paused) {
-				sound.play();
+			// var sound = document.getElementById("sound");
+			// if (sound.paused) {
+				// sound.play();
 				// music_sound.pause;
 				// $("#musicbtn").css("opacity", "1");
-			}
+			// }
 
 			// var data = [0, 1, 2, 3, 4, 5];
 			var data = 0;
 			// data = data[Math.floor(Math.random()*data.length)];
-			data = Math.floor(Math.random()*20);
+			whether_award = Math.floor(Math.random()*10);
 			var award_angle_list = [0, 110, 240];
 			var no_award_angle_list = [45, 180, 300];
+			var award_500_angle_list = [0, 100, 185, 280];
+			var award_turtle_angle_list = [75, 145, 240, 335];
+			var award_sugar_angle_list = [35, 125, 215, 305];
+
 			var index = 0;
-			switch(data){
+			// var award_index = 0;
+			console.log('whether_award :' + whether_award);
+			switch(whether_award){
 				case 1:
-					index = Math.floor(Math.random()*3);
-					angle = award_angle_list[index];
-					moneyVal = 200;
-					rotateFunc(1,angle,'恭喜你中了200 <em ><a href="javascript:void(0)" onclick="showPrize()">点击领取</a></em>');
+				case 2:
+				case 3:
+					which_award = Math.floor(Math.random()*5);
+					console.log('which_award :' + which_award);
+					var award_index = 0;
+					award_index = Math.floor(Math.random()*4);
+					switch(which_award){
+						case 1:
+							angle = award_500_angle_list[award_index];
+							console.log(angle)
+							moneyVal = 500;
+							rotateFunc(1,angle,'【超級大禮$500現金禮券】');
+							break;
+						default:
+							angle = award_turtle_angle_list[award_index];
+							console.log(angle)
+							moneyVal = 1;
+							rotateFunc(1,angle,'【錢草超人氣開運錢龜-招財神物】');
+					}
+					// index = Math.floor(Math.random()*4);
+					// angle = award_angle_list[index];
+					// moneyVal = 200;
+					// rotateFunc(1,angle,'恭喜你中了200 <em ><a href="javascript:void(0)" onclick="showPrize()">点击领取</a></em>');
 					break;
 				default:
-					index = Math.floor(Math.random() * 3);
-					angle = no_award_angle_list[index];
+					index = Math.floor(Math.random()*4);
+					angle = award_sugar_angle_list[index];
+					console.log(angle)
 					moneyVal = -1;
 					rotateFunc(4,angle,'<em>好运连连--加油！！看好你哦</em>');
 			}
 		});
 
-		var rotateFunc = function(awards,angle,text){  //awards:奖项，angle:奖项对应的角度
+		var rotateFunc = function(awards,angle,award_text){  //awards:奖项，angle:奖项对应的角度
 			$plateBtn.stopRotate();
 			$plateBtn.rotate({
 				angle: 0,
-				duration: 5000,
+				// duration: 5000,
+				duration: 1000,
 				animateTo: angle + 1440,  //angle是图片上各奖项对应的角度，1440是让指针固定旋转4圈
 				callback: function() {
-					var sound = document.getElementById("sound");
-					sound.pause();
+					// var sound = document.getElementById("sound");
+					// sound.pause();
 
-					$resultTxt.html(text);
-					//$result.show();
+					// $resultTxt.html(text);
+					// //$result.show();
 					if (moneyVal == -1) {
 						showShare();
 					}
 					else {
-						$('#title_h').text('恭喜你获得' + moneyVal + '元红包');
+						// $('#title_h').text('恭喜你获得' + moneyVal + '元红包');
+						$('#title_h').text(award_text);
 						showPrize();
 					}
 				}
@@ -306,10 +334,10 @@
 						<div id="awards"  style="display: none; margin-top:0;">
 							<div>
 								<h3 id="title_h">恭喜你获得30元红包</h3>
-								<input id="tel" type="text" value="请输入您的手机号码领取" onclick="this.value='';focus()">
+								<!-- <input id="tel" type="text" value="请输入您的手机号码领取" onclick="this.value='';focus()">
 								<a class="a_prize" href="javascript:void(0);" onclick="lingjiang();">领奖</a>
 								<a class="a_share" href="http://www.rongtoujinrong.com/member/promotion/" target="_blank">分享</a>
-								<p>点击领取奖品后关注融头金融公众号进入公众号后您可以在平台活动—活动红包查看您获得的红包</p>
+								<p>点击领取奖品后关注融头金融公众号进入公众号后您可以在平台活动—活动红包查看您获得的红包</p> -->
 							</div>
 						</div>
 						<div id="mask_share" class="mask" style="display: none" onclick="closeShare()"></div>
